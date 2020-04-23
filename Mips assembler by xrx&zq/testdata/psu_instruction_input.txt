@@ -1,0 +1,19 @@
+mymove:
+    move $t0,$s0
+    or $t0,$s0,$zero
+mybgt:
+    bgt $s0,$t0,mybgt
+    slt $at,$t0,$s0
+    bne $at,$zero,mybgt
+myblt:
+    blt $s0,$t0,myblt
+    slt $at,$s0,$t0
+    bne $at,$zero,myblt
+mybge:
+    bge $s0,$t0,mybge
+    slt $at,$s0,$t0
+    beq $at,$zero,mybge
+myble:
+    ble $s0,$t0,myble
+    slt $at,$t0,$s0
+    beq $at,$zero,myble

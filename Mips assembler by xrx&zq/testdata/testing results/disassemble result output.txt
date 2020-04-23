@@ -1,0 +1,29 @@
+nop
+addi $a0,$zero,1
+addi $a1,$zero,2
+addi $a2,$zero,3
+lw $at,0($zero)
+lw $v0,4($zero)
+lw $v1,8($zero)
+beq $v1,$zero,4
+beq $v1,$a0,5
+beq $v1,$a1,6
+beq $v1,$a2,-11
+j 5
+add $a3,$at,$v0
+j 20
+sub $a3,$v0,$at
+j 20
+and $a3,$at,$v0
+j 20
+or $a3,$at,$v0
+sw $at,0($zero)
+sw $v0,4($zero)
+sw $v1,8($zero)
+j 5
+addi $sp,$sp,-6
+sw $ra,1234($sp)
+sll $s0,$s0,2
+lw $s0,123($s0)
+sw $s0,2($sp)
+

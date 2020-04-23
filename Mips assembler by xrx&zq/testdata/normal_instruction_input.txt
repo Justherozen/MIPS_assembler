@@ -1,0 +1,34 @@
+main:  
+#comment test
+#中文读取测试
+lalalaerrortest 
+       addi $a0, $zero, 1
+        addi $a1, $zero, 2
+        addi $a2, $zero, 3
+loop: lw $at, 0($zero)
+        lw $v0, 4($zero)
+        lw $v1, 8($zero)
+        move $v0,$zero
+        Bgt $v1,$zero,add
+        Ble $v0,$v1,sub
+        beq $v1, $zero, add
+        beq $v1, $a0, sub
+        beq $v1, $a1, and
+        beq $v1, $a2, main
+        j loop
+add:  add $a3, $at, $v0
+        j show
+sub: sub $a3, $v0, $at
+        j show
+and: and $a3, $at, $v0
+        j show
+or:    or $a3, $at, $v0
+show: sw $at, 0($zero)
+        sw $v0, 4($zero)
+        sw $v1, 8($zero)
+        j loop
+        addi $sp, $sp, -6
+        sw $ra, 1234($sp)
+        sll $s0, $s0, 2
+        lw $s0, 123($s0)
+        sw $s0, 2($sp)
